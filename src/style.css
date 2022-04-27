@@ -1,10 +1,12 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: #f6f6f6;
   font-family: "Open Sans", "Lucida Grande", tahoma, verdana, arial, sans-serif;
 }
+
 .container {
   display: flex;
   align-items: center;
@@ -16,7 +18,7 @@ body {
   width: 80%;
   list-style-type: none;
   background-color: #fff;
-  box-shadow: #e2e2e2 0px 7px 29px 0px;
+  box-shadow: #e2e2e2 0 7px 29px 0;
   padding: 0;
 }
 

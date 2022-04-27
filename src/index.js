@@ -1,7 +1,9 @@
+/* eslint-disable */
 import _ from "lodash";
+/* eslint-enable */
 import "./style.css";
 
-let toDoList = [
+const toDoList = [
   {
     description: "Implement todo list structure template using webpack",
     completed: false,
@@ -17,7 +19,7 @@ let toDoList = [
 function loadList() {
   const myList = document.querySelector(".my-list");
   let htmlEl = "";
-  for (let item of toDoList) {
+  toDoList.forEach((item) => {
     htmlEl += `<li class="list-item">
                 <div class="list-label">
                   <input type="checkbox" id="list${item.id}" name="list${item.id}" />
@@ -51,7 +53,7 @@ function loadList() {
                   </svg>
                 </div>
               </li>`;
-  }
+  });
 
   myList.innerHTML = htmlEl;
 }
