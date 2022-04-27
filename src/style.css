@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #f6f6f6;
+  font-family: "Open Sans", "Lucida Grande", tahoma, verdana, arial, sans-serif;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.list {
+  width: 80%;
+  list-style-type: none;
+  background-color: #fff;
+  box-shadow: #e2e2e2 0px 7px 29px 0px;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.title {
+  color: #545862;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+}
+
+.input-text input {
+  border: none;
+  outline: none;
+  height: 20px;
+  padding: 1rem;
+  width: 80%;
+}
+
+.input-text input:active {
+  border: none;
+  outline: none;
+}
+
+.input-text input::placeholder {
+  font-style: italic;
+}
+
+.clear-link {
+  background-color: #f6f6f6;
+  text-align: center;
+  display: block;
+  padding: 1rem;
+}
+
+.clear-link a {
+  color: #000;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+.clear-link a:hover {
+  text-decoration: underline;
+}
+
+svg {
+  opacity: 0.5;
+}
+
+.my-list {
+  padding: 0;
+  list-style: none;
+}
+
+.list-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
