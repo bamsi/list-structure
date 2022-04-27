@@ -1,24 +1,24 @@
 /* eslint-disable */
 import _ from "lodash";
 /* eslint-enable */
-import "./style.css";
+import './style.css';
 
 const toDoList = [
   {
-    description: "Implement todo list structure template using webpack",
+    description: 'Implement todo list structure template using webpack',
     completed: false,
     index: 1,
   },
   {
-    description: "Implement todo list structure template using javascript",
+    description: 'Implement todo list structure template using javascript',
     completed: false,
     index: 1,
   },
 ];
 
 function loadList() {
-  const myList = document.querySelector(".my-list");
-  let htmlEl = "";
+  const myList = document.querySelector('.my-list');
+  let htmlEl = '';
   toDoList.forEach((item) => {
     htmlEl += `<li class="list-item">
                 <div class="list-label">
