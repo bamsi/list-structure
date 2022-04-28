@@ -36,7 +36,7 @@ body {
   margin: 0;
 }
 
-.input-text input {
+input[type="text"] {
   border: none;
   outline: none;
   height: 20px;
@@ -84,4 +84,12 @@ svg {
   height: 20px;
   margin-right: 10px;
   margin-bottom: 0;
+}
+
+#add-list {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
 }
