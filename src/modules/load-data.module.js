@@ -1,9 +1,10 @@
-import { readLocalStorage } from "./local-storage.module";
+/* eslint "import/prefer-default-export":"off" */
+import { readLocalStorage } from './local-storage.module.js';
 
 function loadData() {
-  const myList = document.querySelector(".my-list");
+  const myList = document.querySelector('.my-list');
   const toDoList = readLocalStorage();
-  let htmlEl = "";
+  let htmlEl = '';
   toDoList.forEach((item) => {
     htmlEl += `<li class="list-item">
                 <div class="list-label">

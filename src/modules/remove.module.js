@@ -1,4 +1,5 @@
-import { readLocalStorage, writeLocalStorage } from "./local-storage.module";
+/* eslint "import/prefer-default-export":"off" */
+import { readLocalStorage, writeLocalStorage } from './local-storage.module.js';
 
 function removeItems(toDelete) {
   const items = readLocalStorage();
