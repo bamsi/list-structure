@@ -27,11 +27,15 @@
           </div>
         </li>
         <li class="input-text list-item">
-          <input type="text" placeholder="Add to your list...." />
+          <input
+            type="text"
+            placeholder="Add to your list...."
+            id="description"
+          />
           <div class="arrow-left">
             <svg
               version="1.1"
-              id="Layer_1"
+              id="add-list"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               x="0px"
@@ -51,7 +55,9 @@
         <li>
           <ul class="my-list"></ul>
         </li>
-        <li class="clear-link"><a href="#">Clear all completed</a></li>
+        <li class="clear-link">
+          <a href="#" id="clear-items">Clear all completed</a>
+        </li>
       </ul>
     </div>
   </body>

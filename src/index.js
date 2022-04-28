@@ -1,61 +1,94 @@
 /* eslint-disable */
 import _ from "lodash";
 /* eslint-enable */
-import './style.css';
+import "./style.css";
+import { addListItem } from "./modules/add.module";
+import { loadData } from "./modules/load-data.module";
+import { update } from "./modules/update.module";
+import { removeItems } from "./modules/remove.module";
 
-const toDoList = [
-  {
-    description: 'Implement todo list structure template using webpack',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Implement todo list structure template using javascript',
-    completed: false,
-    index: 1,
-  },
-];
+const newItem = document.querySelector("#add-list");
+let deleteList = [];
 
-function loadList() {
-  const myList = document.querySelector('.my-list');
-  let htmlEl = '';
-  toDoList.forEach((item) => {
-    htmlEl += `<li class="list-item">
-                <div class="list-label">
-                  <input type="checkbox" id="list${item.id}" name="list${item.id}" />
-                  <label for="list${item.id}"> ${item.description} </label>
-                </div>
-                <div>
-                  <svg
-                    version="1.1"
-                    id="Capa_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    x="0px"
-                    y="0px"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 60 60"
-                    style="enable-background: new 0 0 60 60"
-                    xml:space="preserve"
-                  >
-                    <g>
-                      <path
-                        d="M30,16c4.411,0,8-3.589,8-8s-3.589-8-8-8s-8,3.589-8,8S25.589,16,30,16z"
-                      />
-                      <path
-                        d="M30,44c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,44,30,44z"
-                      />
-                      <path
-                        d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z"
-                      />
-                    </g>
-                  </svg>
-                </div>
-              </li>`;
+window.onload = loadData();
+
+newItem.addEventListener("click", () => {
+  let description = document.getElementById("description");
+  addListItem(description.value);
+  description.value = "";
+  window.location = "index.html";
+});
+
+const links = document.querySelectorAll(".list-desc");
+
+links.forEach((e) => {
+  e.addEventListener("click", () => {
+    e.classList.add("hide");
+    const item = e.getAttribute("id");
+    const input = document.querySelector(item);
+    input.classList.remove("hide");
+    input.addEventListener("focusout", () => {
+      const index = item.split("_")[1];
+      const newItem = {
+        id: index,
+        description: input.value,
+      };
+      update(newItem);
+      e.classList.remove("hide");
+      hideAll();
+      window.location = "index.html";
+    });
   });
+});
 
-  myList.innerHTML = htmlEl;
+function hideAll() {
+  links.forEach((e) => {
+    const item = e.getAttribute("id");
+    const input = document.querySelector(item);
+    input.classList.add("hide");
+  });
 }
 
-window.onload = loadList();
+const checkedItem = document.querySelectorAll(".item-check");
+
+checkedItem.forEach((e) => {
+  e.addEventListener("click", () => {
+    const item = e.getAttribute("id");
+    const arr = item.split("_");
+    const index = arr[1];
+    if (arr[0] == "square") {
+      deleteItem(parseInt(index));
+    } else {
+      activateItem(parseInt(index));
+    }
+  });
+});
+
+function deleteItem(index) {
+  const square = `square_${index}`;
+  const tick = `tick_${index}`;
+  const inactiveItem = document.getElementById(square);
+  const activeItem = document.getElementById(tick);
+  inactiveItem.style.display = "none";
+  activeItem.style.display = "inline";
+  deleteList.push(index);
+}
+
+function activateItem(index) {
+  const square = `square_${index}`;
+  const tick = `tick_${index}`;
+  const activeItem = document.getElementById(square);
+  const inactiveItem = document.getElementById(tick);
+  inactiveItem.style.display = "none";
+  activeItem.style.display = "inline";
+  deleteList = deleteList.filter((item) => {
+    return item != index;
+  });
+}
+
+const clearItem = document.getElementById("clear-items");
+clearItem.addEventListener("click", () => {
+  removeItems(deleteList);
+  deleteList = [];
+  window.location = "index.html";
+});
