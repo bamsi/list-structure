@@ -5,7 +5,7 @@ import _ from "lodash";
 import './style.css';
 import { addListItem } from './modules/add.module.js';
 import { loadData } from './modules/load-data.module.js';
-import { update } from './modules/update.module.js';
+import { update, completed } from './modules/update.module.js';
 import { removeItems } from './modules/remove.module.js';
 
 const newItem = document.querySelector('#add-list');
@@ -18,7 +18,7 @@ newItem.addEventListener('click', () => {
   if (description.value !== '') {
     addListItem(description.value);
     description.value = '';
-    window.location = 'index.html';
+    window.location.reload();
   }
 });
 
@@ -33,23 +33,33 @@ function hideAll() {
 }
 
 function deleteItem(index) {
+  index = parseInt(index, 10);
   const square = `square_${index}`;
   const tick = `tick_${index}`;
+  const listDesc = `#list_${index}`;
   const inactiveItem = document.getElementById(square);
   const activeItem = document.getElementById(tick);
+  const listItem = document.getElementById(listDesc);
   inactiveItem.style.display = 'none';
   activeItem.style.display = 'inline';
+  listItem.style.textDecoration = 'line-through';
   deleteList.push(index);
+  completed(index, true);
 }
 
 function activateItem(index) {
+  index = parseInt(index, 10);
   const square = `square_${index}`;
   const tick = `tick_${index}`;
+  const listDesc = `#list_${index}`;
   const activeItem = document.getElementById(square);
   const inactiveItem = document.getElementById(tick);
+  const listItem = document.getElementById(listDesc);
   inactiveItem.style.display = 'none';
   activeItem.style.display = 'inline';
+  listItem.style.textDecoration = 'none';
   deleteList = deleteList.filter((item) => item !== index);
+  completed(index, false);
 }
 
 links.forEach((e) => {
@@ -59,7 +69,7 @@ links.forEach((e) => {
     const input = document.querySelector(item);
     input.classList.remove('hide');
     input.addEventListener('focusout', () => {
-      const index = item.split('_')[1];
+      const index = parseInt(item.split('_')[1], 10);
       const newItem = {
         id: index,
         description: input.value,
@@ -67,7 +77,7 @@ links.forEach((e) => {
       update(newItem);
       e.classList.remove('hide');
       hideAll();
-      window.location = 'index.html';
+      window.location.reload();
     });
   });
 });
@@ -78,11 +88,11 @@ checkedItem.forEach((e) => {
   e.addEventListener('click', () => {
     const item = e.getAttribute('id');
     const arr = item.split('_');
-    const index = arr[1];
+    const index = parseInt(arr[1], 10);
     if (arr[0] === 'square') {
-      deleteItem(parseInt(index, 10));
+      deleteItem(index);
     } else {
-      activateItem(parseInt(index, 10));
+      activateItem(index);
     }
   });
 });
@@ -91,5 +101,5 @@ const clearItem = document.getElementById('clear-items');
 clearItem.addEventListener('click', () => {
   removeItems(deleteList);
   deleteList = [];
-  window.location = 'index.html';
+  window.location.reload();
 });
