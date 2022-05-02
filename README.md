@@ -2,6 +2,9 @@
 
 This is a project structure for the to dolist which has been designed using html, css, javascript and webpack.
 
+#Live Demo
+[Live Demo](https://bamsi.github.io/list-structure/)
+
 ## Built With
 
 HTML, JS (ES6), CSS, Webpack
