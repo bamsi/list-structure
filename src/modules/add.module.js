@@ -1,6 +1,5 @@
 /* eslint "import/prefer-default-export":"off" */
 
-import { loadData } from './load-data.module.js';
 import { readLocalStorage, writeLocalStorage } from './local-storage.module.js';
 
 function addListItem(description) {
@@ -13,7 +12,6 @@ function addListItem(description) {
   };
   items.push(item);
   writeLocalStorage(items);
-  loadData();
 }
 
 export { addListItem };

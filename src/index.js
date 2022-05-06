@@ -101,5 +101,5 @@ const clearItem = document.getElementById('clear-items');
 clearItem.addEventListener('click', () => {
   removeItems(deleteList);
   deleteList = [];
-  window.location.reload();
+  //window.location.reload();
 });
