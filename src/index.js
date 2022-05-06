@@ -7,7 +7,7 @@ import { addListItem } from './modules/add.module.js';
 import { loadData } from './modules/load-data.module.js';
 import { update } from './modules/update.module.js';
 import { removeItems } from './modules/remove.module.js';
-import { completed } from "./modules/completed.module";
+import { completed } from './modules/completed.module.js';
 
 const newItem = document.querySelector('#add-list');
 let deleteList = [];
