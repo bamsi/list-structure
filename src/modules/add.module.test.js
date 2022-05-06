@@ -1,5 +1,5 @@
-import { addListItem } from './add.module';
-import { readLocalStorage } from './local-storage.module';
+import { addListItem } from './add.module.js';
+import { readLocalStorage } from './local-storage.module.js';
 
 jest.mock('./local-storage.module');
 
