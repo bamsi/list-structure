@@ -5,8 +5,9 @@ import _ from "lodash";
 import './style.css';
 import { addListItem } from './modules/add.module.js';
 import { loadData } from './modules/load-data.module.js';
-import { update, completed } from './modules/update.module.js';
+import { update } from './modules/update.module.js';
 import { removeItems } from './modules/remove.module.js';
+import { completed } from './modules/completed.module.js';
 
 const newItem = document.querySelector('#add-list');
 let deleteList = [];
@@ -101,5 +102,5 @@ const clearItem = document.getElementById('clear-items');
 clearItem.addEventListener('click', () => {
   removeItems(deleteList);
   deleteList = [];
-  window.location.reload();
+  // window.location.reload();
 });

@@ -4,7 +4,8 @@ import { readLocalStorage, writeLocalStorage } from './local-storage.module.js';
 function removeItems(toDelete) {
   const items = readLocalStorage();
   toDelete.forEach((element) => {
-    items.splice(toDelete[element - 1], 1);
+    const index = items.findIndex((item) => item.id === element);
+    items.splice(index, 1);
   });
   items.forEach((item, index) => {
     item.id = index + 1;

@@ -1,17 +1,12 @@
 /* eslint "import/prefer-default-export":"off" */
-
 import { readLocalStorage, writeLocalStorage } from './local-storage.module.js';
 
-function addListItem(description) {
+function completed(index, status) {
   const items = readLocalStorage();
-  const index = items.length + 1;
-  const item = {
-    id: index,
-    description,
-    completed: false,
-  };
-  items.push(item);
+  const element = items.filter((i) => i.id === index)[0];
+  element.completed = status;
+  items[index - 1] = element;
   writeLocalStorage(items);
 }
 
-export { addListItem };
+export { completed };
